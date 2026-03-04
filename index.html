@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forgive Me Jaanupakhi ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+#typing {
+    width: 70%;
+    margin: 20px auto;
+    font-size: 18px;
+    min-height: 60px;
+}
+
+.photo {
+    width: 280px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin-top: 15px;
+}
+
+.buttons {
+    margin-top: 25px;
+    position: relative;
+    height: 150px;
+}
+
+button {
+    padding: 14px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: white;
+    color: #ff4b7d;
+}
+
+#noBtn {
+    background-color: #ff4b5c;
+    color: white;
+    position: absolute;
+}
+
+#systemMsg {
+    margin-top: 10px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(0); opacity: 1;}
+    to {transform: translateY(-100vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+    <h1>Jaanupakhi 🕊️❤️</h1>
+
+    <!-- Put your image in same folder and name it us.jpg -->
+    <img src="c:\Users\User\Downloads\IMG_9548.jpeg" class="photo">
+
+    <div id="typing"></div>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes, I forgive you ❤️</button>
+        <button id="noBtn">No 😤</button>
+    </div>
+
+    <div id="systemMsg"></div>
+</div>
+
+<script>
+
+// Typing Animation
+const text = "I know I messed up. But you mean everything to me, Jaanupakhi. Please forgive me baby.";
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+typeWriter();
+
+// YES grows every time NO is hovered
+let yesBtn = document.getElementById("yesBtn");
+let noBtn = document.getElementById("noBtn");
+let systemMsg = document.getElementById("systemMsg");
+let size = 18;
+
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    size += 5;
+    yesBtn.style.fontSize = size + "px";
+
+    systemMsg.innerHTML = "⚠ System Error: Jaanupakhi is not allowed to say No 😌";
+});
+
+// Forgive function
+yesBtn.addEventListener("click", forgive);
+
+function forgive() {
+    document.body.innerHTML = "<h1 style='margin-top:200px;'>YAYYYY ❤️❤️❤️<br>Jaanupakhi Forgave Me!!!<br>I love you more than anything baby 💘</h1>";
+    confettiExplosion();
+}
+
+// Confetti
+function confettiExplosion() {
+    for (let i = 0; i < 200; i++) {
+        let confetti = document.createElement("div");
+        confetti.style.position = "fixed";
+        confetti.style.width = "10px";
+        confetti.style.height = "10px";
+        confetti.style.backgroundColor = "hsl(" + Math.random()*360 + ",100%,50%)";
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.top = "-10px";
+        confetti.style.animation = "fall 3s linear forwards";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+    }
+}
+
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(720deg); }
+}`;
+document.head.appendChild(style);
+
+// Floating hearts
+setInterval(function() {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+
+</script>
+
+</body>
+</html>
